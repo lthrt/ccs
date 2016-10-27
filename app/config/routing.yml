@@ -1,0 +1,8 @@
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+lthrt_ccs:
+    resource: "@LthrtCCSBundle/Controller/"
+    type:     annotation
+    prefix:   /

@@ -1,0 +1,70 @@
+<?php
+
+$types = ['county' => 'county', 'city' => 'city', 'state' => 'state', 'zip' => 'zip'];
+
+function permuteUnique($items, $perms = [], &$return = []) {
+    if (empty($items)) {
+        $return[] = $perms;
+    } else {
+        sort($items);
+        $prev = false;
+        for ($i = count($items) - 1; $i >= 0; --$i) {
+            $newitems = $items;
+            $tmp = array_splice($newitems, $i, 1)[0];
+            if ($tmp != $prev) {
+                $prev = $tmp;
+                $newperms = $perms;
+                array_unshift($newperms, $tmp);
+                permuteUnique($newitems, $newperms, $return);
+            }
+        }
+        return $return;
+    }
+}
+
+function powerSet($array) {
+    // add the empty set
+    $results = array(array());
+
+    foreach ($array as $element) {
+        foreach ($results as $combination) {
+            $results[] = array_merge(array($element), $combination);
+        }
+    }
+
+    return $results;
+}
+
+foreach($types as $type){
+    $powerTypes[$type] = powerSet(array_diff($types, [$type]));
+}
+
+foreach ($powerTypes as $key => $powerType) {
+    foreach ($powerType as $pt) {
+        $uniques = permuteUnique($pt);
+        if ($uniques) {
+            foreach ($uniques as $unique) {
+                $route = "/".$key;
+                $annotation = "     * @Route(\"";
+                foreach ($unique as $piece) {
+                    $route.= "/".$piece."/{"."$piece"."}";
+                }
+                $annotation .= $route;
+                $annotation .=  "\", name=\"".$key."_".implode("_",$unique)."_json\")";
+                $annotations[] = $annotation;
+                $routes[] = $route ;
+            }
+        }
+    }
+}
+
+sort($annotations);
+foreach ($annotations as $annotation) {
+    echo ($annotation."\n");
+}
+
+foreach ($routes as $route) {
+    echo ($route."\n");
+}
+
+?>
