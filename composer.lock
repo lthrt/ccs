@@ -883,12 +883,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/lthrt/LthrtCCSBundle.git",
-                "reference": "0c5af15dc027524722bb9efba9422e0af6ca3273"
+                "reference": "888b9b48393d83e10778e368608f0aebb89cea5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lthrt/LthrtCCSBundle/zipball/0c5af15dc027524722bb9efba9422e0af6ca3273",
-                "reference": "0c5af15dc027524722bb9efba9422e0af6ca3273",
+                "url": "https://api.github.com/repos/lthrt/LthrtCCSBundle/zipball/888b9b48393d83e10778e368608f0aebb89cea5d",
+                "reference": "888b9b48393d83e10778e368608f0aebb89cea5d",
                 "shasum": ""
             },
             "require": {
@@ -927,7 +927,7 @@
                 "source": "https://github.com/lthrt/LthrtCCSBundle/tree/master",
                 "issues": "https://github.com/lthrt/LthrtCCSBundle/issues"
             },
-            "time": "2016-12-14 20:58:31"
+            "time": "2016-12-19 21:46:50"
         },
         {
             "name": "lthrt/entity-bundle",
